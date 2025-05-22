@@ -66,7 +66,7 @@ func importOneTemplate(rgClient ResourceGroupsGetter, deploymentClient Deploymen
 	rgName := helpers.GetResourceGroupNameFromFileName(fileName)
 	_, err = rgClient.Get(context.Background(), rgName, nil)
 	if err != nil && allowCreate {
-		fmt.Println(fmt.Sprintf("Creating resource group %s in %s", rgName, location))
+		fmt.Printf("Creating resource group %s in %s\n", rgName, location)
 		_, err = rgClient.CreateOrUpdate(context.Background(), rgName, armresources.ResourceGroup{
 			Location: to.Ptr(location),
 		}, nil)

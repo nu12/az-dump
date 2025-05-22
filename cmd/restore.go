@@ -64,7 +64,6 @@ func init() {
 	restoreCmd.Flags().StringVarP(&inputPath, "input", "i", "", "Path where the templates are stored (required)")
 	restoreCmd.Flags().BoolVarP(&allowCreate, "create", "c", false, "Create the resource group if it doesn't exist")
 	restoreCmd.Flags().StringVarP(&location, "location", "l", "", "Location of the resource group to be created (required if --create is set)")
-	restoreCmd.MarkFlagRequired("subscription")
 	err := createCmd.MarkFlagRequired("subscription")
 	if err != nil {
 		panic(err)
