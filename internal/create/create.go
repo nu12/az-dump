@@ -44,7 +44,7 @@ func ExportListOfTemplates(client Exporter, commaList string, outputPath string)
 }
 
 func exportOneTemplate(client Exporter, rg string, outputPath string) error {
-	fmt.Println(fmt.Sprintf("Exporting template for resource group %s", rg))
+	fmt.Printf("Exporting template for resource group %s\n", rg)
 	ctx := context.Background()
 	poller, err := client.BeginExportTemplate(ctx, rg, armresources.ExportTemplateRequest{
 		Options: to.Ptr("SkipAllParameterization"),

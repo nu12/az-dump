@@ -75,7 +75,7 @@ func importOneTemplate(rgClient ResourceGroupsGetter, deploymentClient Deploymen
 		}
 	}
 	if err != nil && !allowCreate {
-		fmt.Println(fmt.Sprintf("Resource group %s doesn't exist and creation flag is not present. Skipping...", rgName))
+		fmt.Printf("Resource group %s doesn't exist and creation flag is not present. Skipping...\n", rgName)
 		return nil
 	}
 
@@ -86,7 +86,7 @@ func importOneTemplate(rgClient ResourceGroupsGetter, deploymentClient Deploymen
 		return err
 	}
 
-	fmt.Println(fmt.Sprintf("Importing template for %s", rgName))
+	fmt.Printf("Importing template for %s\n", rgName)
 	ctx := context.Background()
 	poller, err := deploymentClient.BeginCreateOrUpdate(ctx, rgName, "az-dump-restore", armresources.Deployment{
 		Properties: &armresources.DeploymentProperties{

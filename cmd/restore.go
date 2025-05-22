@@ -65,6 +65,13 @@ func init() {
 	restoreCmd.Flags().BoolVarP(&allowCreate, "create", "c", false, "Create the resource group if it doesn't exist")
 	restoreCmd.Flags().StringVarP(&location, "location", "l", "", "Location of the resource group to be created (required if --create is set)")
 	restoreCmd.MarkFlagRequired("subscription")
-	restoreCmd.MarkFlagRequired("input")
+	err := createCmd.MarkFlagRequired("subscription")
+	if err != nil {
+		panic(err)
+	}
+	err = restoreCmd.MarkFlagRequired("input")
+	if err != nil {
+		panic(err)
+	}
 	restoreCmd.MarkFlagsRequiredTogether("create", "location")
 }
