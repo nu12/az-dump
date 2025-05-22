@@ -41,7 +41,10 @@ az-dump create -s <subscription-id> -o <output-path>`,
 		if err != nil {
 			panic(err)
 		}
-		os.MkdirAll(outputPath, 0755)
+		err = os.MkdirAll(outputPath, 0755)
+		if err != nil {
+			panic(err)
+		}
 		if rgName == "" {
 			err := create.ExportAllTemplates(client, outputPath)
 			if err != nil {
@@ -60,5 +63,8 @@ func init() {
 	createCmd.Flags().StringVarP(&subscriptionID, "subscription", "s", "", "Subscription ID to use (required)")
 	createCmd.Flags().StringVarP(&rgName, "rg", "g", "", "Comma separated list of resource group names to dump (empty for all resource groups)")
 	createCmd.Flags().StringVarP(&outputPath, "output", "o", time.Now().Format("20060102150405"), "Path where to save the templates")
-	createCmd.MarkFlagRequired("subscription")
+	err := createCmd.MarkFlagRequired("subscription")
+	if err != nil {
+		panic(err)
+	}
 }

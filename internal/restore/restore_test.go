@@ -50,10 +50,13 @@ func TestImportTemplate(t *testing.T) {
 
 	dir := t.TempDir()
 	tempFile, _ := os.Create(dir + "/azure.json")
-	tempFile.WriteString("{\"$schema\": \"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\",\"contentVersion\": \"1.0.0.0\",\"parameters\": {},\"resources\": [],\"variables\": {}}")
+	_, err := tempFile.WriteString("{\"$schema\": \"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\",\"contentVersion\": \"1.0.0.0\",\"parameters\": {},\"resources\": [],\"variables\": {}}")
+	if err != nil {
+		t.Errorf("failed to write to temp file: %v", err)
+	}
 	defer tempFile.Close()
 
-	err := importOneTemplate(&FakeRGClient{}, &FakeDeploymentClient{}, dir, "azure.json", true, "eastus")
+	err = importOneTemplate(&FakeRGClient{}, &FakeDeploymentClient{}, dir, "azure.json", true, "eastus")
 	if err != nil {
 		t.Errorf("expected no error, got %v", err)
 	}
