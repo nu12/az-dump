@@ -42,6 +42,10 @@ Move binary to a bin folder in your PATH (may require elevated permissions):
 mv az-dump /usr/local/bin/
 ```
 
+## Dependencies
+
+The local terminal session must have `az` CLI installed and the account to be used must be logged in with `az login`. Access to subscription, resource groups and other resources are managed by the cloud provider.
+
 ## Usage
 
 General usage for all commands is `az-dump [command] [flags]`. Find out all available commands with `az-dump`:
