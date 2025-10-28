@@ -20,10 +20,7 @@ type Exporter interface {
 func ExportAllTemplates(client Exporter, outputPath string) error {
 	ctx := context.Background()
 	pager := client.NewListPager(nil)
-	for {
-		if !pager.More() {
-			break
-		}
+	for pager.More() {
 		page, _ := pager.NextPage(ctx)
 		for _, rg := range page.Value {
 			if err := exportOneTemplate(client, *rg.Name, outputPath); err != nil {
