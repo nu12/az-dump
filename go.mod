@@ -2,8 +2,6 @@ module github.com/nu12/az-dump
 
 go 1.25.3
 
-toolchain go1.25.3
-
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.19.1
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.13.0
