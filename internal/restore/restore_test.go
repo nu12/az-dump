@@ -54,7 +54,11 @@ func TestImportTemplate(t *testing.T) {
 	if err != nil {
 		t.Errorf("failed to write to temp file: %v", err)
 	}
-	defer tempFile.Close()
+	defer func() {
+		if err := tempFile.Close(); err != nil {
+			t.Errorf("expected no error, got %v", err)
+		}
+	}()
 
 	err = importOneTemplate(&FakeRGClient{}, &FakeDeploymentClient{}, dir, "azure.json", true, "eastus")
 	if err != nil {
