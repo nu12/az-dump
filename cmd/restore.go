@@ -60,7 +60,7 @@ az-dump restore -s <subscription-id> -g <resource-group-name> -i <input-path> --
 
 func init() {
 	restoreCmd.Flags().StringVarP(&subscriptionID, "subscription", "s", "", "Subscription ID to use (required)")
-	restoreCmd.Flags().StringVarP(&rgName, "rg", "g", "", "Comma separated list of resource group names to dump (empty for all resource groups)")
+	restoreCmd.Flags().StringVarP(&rgName, "rg", "g", "", "Comma separated list of resource group names to restore (empty for all resource groups)")
 	restoreCmd.Flags().StringVarP(&inputPath, "input", "i", "", "Path where the templates are stored (required)")
 	restoreCmd.Flags().BoolVarP(&allowCreate, "create", "c", false, "Create the resource group if it doesn't exist")
 	restoreCmd.Flags().StringVarP(&location, "location", "l", "", "Location of the resource group to be created (required if --create is set)")
