@@ -14,6 +14,6 @@ jobs:
       run-lint: true
       run-test: true
       run-docker-build: true
-      go-version: '1.25.3'
+      go-version: '1.25.4'
       docker-tag: 'latest'
     secrets: inherit
