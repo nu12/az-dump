@@ -1,6 +1,6 @@
 module github.com/nu12/az-dump
 
-go 1.26.0
+go 1.26.6
 
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.22.0
