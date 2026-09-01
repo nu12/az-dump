@@ -6,7 +6,7 @@ COPY . .
 
 RUN go build -o az-dump main.go
 
-FROM mcr.microsoft.com/azure-cli:2.89.1
+FROM mcr.microsoft.com/azure-cli:2.90.0
 LABEL org.opencontainers.image.source=https://github.com/nu12/az-dump
 
 WORKDIR /app
